@@ -1,0 +1,49 @@
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Add Transaction</h5>
+    </div>
+
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="e.g. Biriyani" [(ngModel)]="title" >
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="amount" class="form-label">Amount (₹)</label>
+                    <input type="number" class="form-control" name="amount" id="amount" placeholder="e.g. 250" [(ngModel)]="amount" >
+                </div>
+
+                <div class="col-md-4">
+                    <label for="type" class="form-label">Type</label>
+                    <select name="type" id="type" class="form-select" [(ngModel)]="type">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" name="category" id="category" [(ngModel)]="category">
+                        @for (c of categories; track c) {
+                            <option [value]="c">{{ c }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" name="date" id="date" [(ngModel)]="date" >
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success w-100">Add</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
