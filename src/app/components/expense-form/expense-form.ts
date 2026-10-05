@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ExpenseService } from '../../services/expense.service';
 import { Expense } from '../../models/expense';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   imports: [FormsModule],
@@ -21,8 +21,8 @@ export class ExpenseForm {
 
   categories = this.expenseService.categories;
 
-  onSubmit() {
-    if(!this.title.trim() || !this.amount || this.amount <= 0) {
+  onSubmit(form: NgForm) {
+    if(form.invalid || !this.title.trim() || this.amount === null) {
       return;
     }
 
@@ -36,14 +36,17 @@ export class ExpenseForm {
     };
 
     this.expenseService.addExpense(newExpense);
-    this.resetForm();
+    this.resetForm(form);
   }
 
-  resetForm() {
-    this.title = '';
-    this.amount = null;
-    this.type = 'expense';
-    this.category = 'Food';
-    this.date = new Date().toISOString().split('T')[0];
+  resetForm(form: NgForm) {
+    form.resetForm({
+    title: '',
+    amount: null,
+    type: 'expense',
+    category: 'Food',
+    date: new Date().toISOString().split('T')[0],
+
+    })
   }
 }

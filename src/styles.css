@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background: linear-gradient(135deg, #f5f7fa,#e4ebf5);
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.fancy-select {
+    border: 2px solid #667eea;
+    border-radius: 20px;
+    padding-left: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fancy-select:hover {
+    border-color: #764ba2;
+}
+
+.fancy-select option {
+    padding: 10px;
+}
